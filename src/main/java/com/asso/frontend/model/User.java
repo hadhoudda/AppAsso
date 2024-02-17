@@ -1,9 +1,8 @@
 package com.asso.frontend.model;
 
 
-//import lombok.Data;
-//
-//@Data
+import lombok.Data;
+@Data
 public class User {
 		
 	 private Integer id;
