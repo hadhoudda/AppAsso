@@ -1,5 +1,7 @@
 package com.asso.frontend.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -16,6 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class UserProxy {
+	
+	private final static Logger log = LoggerFactory.getLogger(UserProxy.class);
 	
 	@Autowired
     private CustomProperties props;
@@ -37,7 +41,7 @@ public class UserProxy {
                 new ParameterizedTypeReference<Iterable<User>>() {}
                 );
 
-        //log.debug("Get Users call " + response.getStatusCode().toString());
+        log.debug("Get Users call " + response.getStatusCode().toString());
         
         return response.getBody();
     }
@@ -59,7 +63,7 @@ public class UserProxy {
 				User.class
 			);
 		
-		//log.debug("Get User call " + response.getStatusCode().toString());
+		log.debug("Get User call " + response.getStatusCode().toString());
 		
 		return response.getBody();
 	}
@@ -69,9 +73,10 @@ public class UserProxy {
      */
 
     public User createUser(User e) {
+    	
         String baseApiUrl = props.getApiUrl();
         String createUserUrl = baseApiUrl + "/users";
-
+        
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<User> request = new HttpEntity<User>(e);
         ResponseEntity<User> response = restTemplate.exchange(
@@ -80,7 +85,7 @@ public class UserProxy {
             request,
             User.class);
 
-        //log.debug("Create User call " + response.getStatusCode().toString());
+        log.debug("Create User call " + response.getStatusCode().toString());
 
         return response.getBody();
     }
@@ -101,7 +106,7 @@ public class UserProxy {
 				request, 
 				User.class);
 		
-		//log.debug("Update User call " + response.getStatusCode().toString());
+		log.debug("Update User call " + response.getStatusCode().toString());
 		
 		return response.getBody();
 	}
@@ -122,6 +127,6 @@ public class UserProxy {
 				null, 
 				Void.class);
 		
-		//log.debug("Delete User call " + response.getStatusCode().toString());
+		log.debug("Delete User call " + response.getStatusCode().toString());
 	}
 }

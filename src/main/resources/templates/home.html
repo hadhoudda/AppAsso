@@ -1,11 +1,30 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Ma page de test</title>
-  </head>
-  <body>
-    <h1>test test </h1>
-  </body>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml" xmlns:th="http://www.thymeleaf.org">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>Asso Web Application</title>
+    </head>
+    <body>
+        <h2 class="h2">Liste des utilisateurs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${users.empty}">
+                    <td colspan="3">Aucun employée en base de données</td>
+                </tr>
+                <tr th:each="user: ${users}">
+                    <td><span th:text="${user.firstName}"> Prénom </span></td>
+                    <td><span th:text="${user.lastName}"> Nom </span></td>
+                    <td><span th:text="${user.age}"> Age </span></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
 </html>
