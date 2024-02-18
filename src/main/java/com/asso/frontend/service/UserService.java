@@ -12,36 +12,37 @@ import lombok.Data;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserProxy userProxy;
+	 @Autowired
+	    private UserProxy userProxy;
 
-//    public User getEmployee(final int id) {
-//        return userProxy.getUser(id);
-//    }
-//
-//    public Iterable<User> getEmployees() {
-//        return userProxy.getUsers();
-//    }
-//
-//    public void deleteEmployee(final int id) {
-//        userProxy.deleteUser(id);;
-//    }
-//
-//     public User saveEmployee(User user) {
-//        User savedEmployee;
-//
-//        // Règle de gestion : Le nom de famille doit être mis en majuscule.
-//        user.setLastName(employee.getLastName().toUpperCase());
-//
-//        if(employee.getId() == null) {
-//            // Si l'id est nul, alors c'est un nouvel employé.
-//            savedEmployee = userProxy.createUser(user);
-//        } else {
-//            savedEmployee = userProxy.updateUser(user);
-//        }
-//    
-//        return savedEmployee;
-//    }
+	    public User getUser(final int id) {
+	        return userProxy.getUser(id);
+	    }
+
+	    public Iterable<User> getUsers() {
+	        return userProxy.getUsers();
+	    }
+
+	    public void deleteUser(final int id) {
+	        userProxy.deleteUser(id);;
+	    }
+
+	     public User saveUser(User user) {
+	        User savedUser;
+
+	        // Règle de gestion : Le nom de famille doit être mis en majuscule.
+	        user.setLastName(user.getLastName().toUpperCase());
+
+	        if(user.getId() == null) {
+	            // Si l'id est nul, alors c'est un nouvel utilisateur.
+	            savedUser = userProxy.createUser(user);
+	        } else {
+	            savedUser = userProxy.updateUser(user);
+	        }
+	    
+	        return savedUser;
+	    }
+
 
 
 }
