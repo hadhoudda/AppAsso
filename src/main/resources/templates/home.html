@@ -16,15 +16,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${users.empty}">
-                    <td colspan="3">Aucun employée en base de données</td>
+                <tr th:if="${users.empty}"> <-- users le nom de tableau -->
+                    <td colspan="3">Aucun utilisateur en base de données</td>
                 </tr>
-                <tr th:each="user: ${users}">
+                <tr th:each="user: ${users}"> 
                     <td><span th:text="${user.firstName}"> Prénom </span></td>
                     <td><span th:text="${user.lastName}"> Nom </span></td>
                     <td><span th:text="${user.age}"> Age </span></td>
+                    <td>
+						<a th:href="@{/updateUser/{id}(id=${user.id})}"><button class="btn btn-info">Modifier</button></a>
+						<a th:href="@{/deleteUser/{id}(id=${user.id})}"><button class="btn btn-danger">Supprimer</button></a>						
+					</td>
                 </tr>
             </tbody>
         </table>
+        <h4><a th:href="@{/createUser}">Ajouter un nouvel utilisateur</a></h4>
     </body>
 </html>
