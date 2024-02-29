@@ -58,4 +58,12 @@ public class UserController {
 		return new ModelAndView("redirect:/");	
 	}
 	
+	@GetMapping("/contacte")
+	public String contact() {
+	    return "contact";
+	}
+	@GetMapping("/retour")
+	public String Retour() {
+		return ("redirect:/");
+	}
 }
