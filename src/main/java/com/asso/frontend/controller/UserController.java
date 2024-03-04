@@ -58,7 +58,7 @@ public class UserController {
 		return new ModelAndView("redirect:/");	
 	}
 	
-	@GetMapping("/contacte")
+	@GetMapping("/contact")
 	public String contact() {
 	    return "contact";
 	}
